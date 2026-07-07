@@ -26,7 +26,19 @@ import lombok.*;
 	    @Column(nullable = false)
 	    private String city;
 	    
-	    public Long getCustomerId() {
+	    @Enumerated(EnumType.STRING)
+	    @Column(nullable = false)
+	    private KycStatus kycStatus;
+	    
+	    public KycStatus getKycStatus() {
+			return kycStatus;
+		}
+
+		public void setKycStatus(KycStatus kycStatus) {
+			this.kycStatus = kycStatus;
+		}
+
+		public Long getCustomerId() {
 	        return customerId;
 	    }
 
