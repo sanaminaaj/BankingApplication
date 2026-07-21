@@ -1,4 +1,6 @@
 package com.fis.banking_parent.com.fis.banking_parent.entity;
+import com.fis.banking_parent.com.fis.banking_parent.enums.AccountStatus;
+
 import jakarta.persistence.*;
 import lombok.*;
 @Entity
@@ -26,11 +28,18 @@ import lombok.*;
 	    @Column(nullable = false)
 	    private String city;
 	    
+	    
 	    @Enumerated(EnumType.STRING)
 	    @Column(nullable = false)
 	    private KycStatus kycStatus;
 	    
-	    public KycStatus getKycStatus() {
+	    @Enumerated(EnumType.STRING)
+	    @Column(nullable = false)
+
+	    private AccountStatus accountStatus;
+	    
+
+		public KycStatus getKycStatus() {
 			return kycStatus;
 		}
 
@@ -77,5 +86,12 @@ import lombok.*;
 	    public void setCity(String city) {
 	        this.city = city;
 	    }
+	    public void setAccountStatus(AccountStatus accountStatus) {
+	    	this.accountStatus=accountStatus;
+	    }
+		public AccountStatus getAccountStatus() {
+			// TODO Auto-generated method stub
+			return this.accountStatus;
+		}
 	
 }
