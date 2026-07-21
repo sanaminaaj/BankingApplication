@@ -12,6 +12,7 @@ import com.fis.banking_parent.com.fis.banking_parent.service.UserService;
 
 import org.springframework.web.bind.annotation.RequestBody;
 @RestController
+
 @RequestMapping("/auth")
 public class AuthController {
 
