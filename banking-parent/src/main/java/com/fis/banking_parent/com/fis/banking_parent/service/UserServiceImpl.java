@@ -1,5 +1,6 @@
 package com.fis.banking_parent.com.fis.banking_parent.service;
 
+import com.fis.banking_parent.com.fis.banking_parent.dto.LoginRequest;
 import com.fis.banking_parent.com.fis.banking_parent.dto.RegisterRequest;
 import com.fis.banking_parent.com.fis.banking_parent.dto.RegisterResponse;
 import com.fis.banking_parent.com.fis.banking_parent.entity.Customer;
@@ -9,8 +10,9 @@ import com.fis.banking_parent.com.fis.banking_parent.repository.CustomerReposito
 import com.fis.banking_parent.com.fis.banking_parent.repository.UserRepository;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
-	import org.springframework.stereotype.Service;
-
+import org.springframework.stereotype.Service;
+import com.fis.banking_parent.com.fis.banking_parent.exception.InvalidLoginException;
+import com.fis.banking_parent.com.fis.banking_parent.exception.InvalidUsernameException;
 	
 	@Service
 	public class UserServiceImpl implements UserService {
@@ -63,6 +65,26 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 	        return new RegisterResponse("Registration Successful");
 
 	    }
+
+		@Override
+		public String login(LoginRequest request) {
+			// TODO Auto-generated method stub
+			   User user = userRepository
+			            .findByUsername(request.getUsername())
+			            .orElseThrow(() -> new InvalidUsernameException("User Not Found"));
+
+			    boolean validPassword = passwordEncoder.matches(
+			            request.getPassword(),
+			            user.getPassword()
+			    );
+
+			    if (!validPassword) {
+			        throw new InvalidLoginException("invalid cred");
+			    }
+
+			    return "Login successful";
+			
+		}
 
 	}
 	

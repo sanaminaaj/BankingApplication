@@ -1,5 +1,6 @@
 package com.fis.banking_parent.com.fis.banking_parent.service;
 
+import com.fis.banking_parent.com.fis.banking_parent.dto.KycRequestDto;
 import com.fis.banking_parent.com.fis.banking_parent.dto.KycResponseDto;
 import com.fis.banking_parent.com.fis.banking_parent.dto.RejectRequestDto;
 

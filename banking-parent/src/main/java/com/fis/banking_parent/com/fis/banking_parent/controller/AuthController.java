@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fis.banking_parent.com.fis.banking_parent.dto.LoginRequest;
 import com.fis.banking_parent.com.fis.banking_parent.dto.RegisterRequest;
 import com.fis.banking_parent.com.fis.banking_parent.dto.RegisterResponse;
 import com.fis.banking_parent.com.fis.banking_parent.service.UserService;
@@ -30,6 +31,13 @@ public class AuthController {
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(response);
+    }
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody LoginRequest request) {
+
+        String response = userService.login(request);
+
+        return ResponseEntity.ok(response);
     }
 
 }

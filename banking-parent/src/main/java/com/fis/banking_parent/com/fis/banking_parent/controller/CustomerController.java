@@ -25,7 +25,7 @@ public class CustomerController {
 
 	    // US-006: Register a new customer
 	    @PostMapping
-	    public ResponseEntity<Customer> registerCustomer(@RequestBody Customer customer) {
+	    public ResponseEntity<Customer> registerCustomer(@RequestBody Customer customer) 		{
 	        Customer savedCustomer = customerService.registerCustomer(customer);
 	        return new ResponseEntity<>(savedCustomer, HttpStatus.CREATED);
 	    }
