@@ -73,7 +73,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.dailycodebuffer</groupId>
 			<artifactId>ProductService</artifactId>
@@ -87,6 +86,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
+		
 	</dependencies>
 
 	<build>

@@ -1,5 +1,8 @@
 package com.fis.banking_parent.com.fis.banking_parent.controller;
 
+import java.util.List;
+
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,6 +38,12 @@ public class CustomerController {
 	    public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
 	        Customer customer = customerService.getCustomer(id);
 	        return ResponseEntity.ok(customer);
+	    }
+	    
+	    @GetMapping("/{page}/{size}")
+	    public ResponseEntity<Page<Customer>> getCustomers(@PathVariable int page,@PathVariable int size){
+	    	Page<Customer> list=customerService.getCustomers(page,size);
+	    	return ResponseEntity.ok(list);
 	    }
 
 	    // US-008: Update customer profile

@@ -1,12 +1,16 @@
 package com.fis.banking_parent.com.fis.banking_parent.service;
 
-import java.util.Optional;
+import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.fis.banking_parent.com.fis.banking_parent.entity.Customer;
 import com.fis.banking_parent.com.fis.banking_parent.repository.CustomerRepository;
-
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
@@ -56,6 +60,17 @@ public class CustomerServiceImpl implements CustomerService {
 		existing.setEmail(c.getEmail());
 		existing.setMobileNumber(c.getMobileNumber());
 		return cRepo.save(existing);
+	}
+	
+	public Page<Customer> getCustomers(int page, int size) {
+
+	    Pageable pageable = PageRequest.of(
+	            page,
+	            size,
+	            Sort.by("customerId").ascending()
+	    );
+
+	    return cRepo.findAll(pageable);
 	}
 
 }
